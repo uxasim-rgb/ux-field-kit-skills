@@ -1,0 +1,3 @@
+interface:
+  display_name: "Design Systems"
+  short_description: "Tokens, component APIs, versioning and governance"

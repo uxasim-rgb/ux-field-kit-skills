@@ -1,0 +1,3 @@
+interface:
+  display_name: "Layout and Composition"
+  short_description: "Grouping, spacing scale, density and responsive"

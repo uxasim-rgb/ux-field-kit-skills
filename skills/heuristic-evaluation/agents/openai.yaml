@@ -1,0 +1,3 @@
+interface:
+  display_name: "Heuristic Evaluation"
+  short_description: "Expert inspection and competitive teardown"

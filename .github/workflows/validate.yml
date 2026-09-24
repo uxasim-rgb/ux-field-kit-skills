@@ -1,0 +1,90 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  structure:
+    name: Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # The same script contributors run locally, so CI and local cannot drift.
+      - name: Validate structure
+        run: bash scripts/validate.sh
+
+      - name: Version bumped when skills change
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+          base="origin/${{ github.base_ref }}"
+          if git diff --quiet "$base" -- skills/; then
+            echo "No skill changes; version bump not required."
+            exit 0
+          fi
+          if git diff --quiet "$base" -- .claude-plugin/plugin.json; then
+            echo "::error::skills/ changed but .claude-plugin/plugin.json was not touched. 'claude plugin update' compares that version and nothing else, so this change would never reach anyone who installed the plugin."
+            exit 1
+          fi
+          echo "ok: plugin.json touched alongside skills/"
+
+  eval:
+    name: Skill triggering evals
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      # Without the secret this job reports success and does nothing, so forks
+      # and contributors without API access still get a green structure check.
+      - name: Check for API key
+        id: gate
+        env:
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "No ANTHROPIC_API_KEY secret configured — skipping evals."
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          node-version: '22'
+
+      - name: Install Claude Code
+        if: steps.gate.outputs.run == 'true'
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run eval suite
+        if: steps.gate.outputs.run == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          claude plugin eval . \
+            --trust-plugin \
+            --model claude-sonnet-5 \
+            --threshold 0.8 \
+            --max-cost-usd 15 \
+            --no-publish \
+            --json evals-result.json
+
+      - name: Upload eval report
+        if: always() && steps.gate.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: |
+            evals-result.json
+            evals/results/
+          retention-days: 14
+          if-no-files-found: ignore

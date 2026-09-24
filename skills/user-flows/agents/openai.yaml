@@ -1,0 +1,3 @@
+interface:
+  display_name: "User Flows"
+  short_description: "Entry points, edge cases, errors and recovery"

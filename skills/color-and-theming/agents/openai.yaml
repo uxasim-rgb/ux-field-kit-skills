@@ -1,0 +1,3 @@
+interface:
+  display_name: "Color and Theming"
+  short_description: "Ramps, semantic tokens, contrast and dark mode"

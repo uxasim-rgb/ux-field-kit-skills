@@ -1,0 +1,3 @@
+interface:
+  display_name: "Field Guide"
+  short_description: "Routes a UX request to the skill that owns it"

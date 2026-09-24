@@ -1,0 +1,5 @@
+interface:
+  display_name: "Design Critique"
+  short_description: "Framing the ask and giving usable feedback"
+policy:
+  allow_implicit_invocation: false

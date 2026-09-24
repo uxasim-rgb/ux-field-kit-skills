@@ -1,0 +1,5 @@
+interface:
+  display_name: "Case Studies"
+  short_description: "Portfolio structure around decisions and evidence"
+policy:
+  allow_implicit_invocation: false

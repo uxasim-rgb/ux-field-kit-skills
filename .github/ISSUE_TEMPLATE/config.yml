@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: How a skill is meant to be written
+    url: https://github.com/uxasim-rgb/ux-field-kit-skills/blob/main/AGENTS.md
+    about: The house shape, rule ownership and invocation rules.
+  - name: Contributing
+    url: https://github.com/uxasim-rgb/ux-field-kit-skills/blob/main/CONTRIBUTING.md
+    about: Checklist, eval cases, and what gets declined.

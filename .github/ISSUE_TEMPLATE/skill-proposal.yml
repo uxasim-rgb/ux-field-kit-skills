@@ -1,0 +1,39 @@
+name: Skill proposal
+description: Propose a new skill
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read the rule-ownership table in [AGENTS.md](../blob/main/AGENTS.md) first.
+        A rule lives in exactly one skill — if this belongs inside an existing one,
+        that is a smaller and better change.
+  - type: input
+    id: name
+    attributes:
+      label: Proposed name
+      description: Job-shaped, lowercase, hyphens. What a person would type.
+      placeholder: onboarding-design
+    validations:
+      required: true
+  - type: textarea
+    id: owns
+    attributes:
+      label: What would it own?
+      description: One row as it would appear in the ownership table.
+    validations:
+      required: true
+  - type: textarea
+    id: why-not-existing
+    attributes:
+      label: Why does this not belong in an existing skill?
+      description: Name the closest existing skill and say why it is not the right home.
+    validations:
+      required: true
+  - type: textarea
+    id: consumers
+    attributes:
+      label: Who needs this, besides you?
+      description: A skill with one consumer stays in that consumer's project.
+    validations:
+      required: true

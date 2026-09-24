@@ -1,0 +1,3 @@
+interface:
+  display_name: "Design Docs"
+  short_description: "Decision records that outlive the conversation"

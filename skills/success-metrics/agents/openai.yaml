@@ -1,0 +1,3 @@
+interface:
+  display_name: "Success Metrics"
+  short_description: "Outcome metrics, guardrails and instrumentation"

@@ -1,0 +1,27 @@
+name: Content correction
+description: Something in a skill is wrong, stale or misleading
+labels: ["correction"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill
+      placeholder: accessibility
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: What it currently says
+      description: Quote it, with the heading it sits under.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What it should say, and why
+      description: |
+        If this is a standard or a measurable threshold, please link the source.
+        Every rule here has to name a consequence — preferences are not shipped as rules.
+    validations:
+      required: true

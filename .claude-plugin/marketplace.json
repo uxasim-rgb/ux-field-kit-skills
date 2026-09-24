@@ -1,0 +1,21 @@
+{
+  "name": "ux-field-kit",
+  "owner": {
+    "name": "Asim Sharif",
+    "email": "asim@uxasim.com",
+    "url": "https://uxasim.com/"
+  },
+  "metadata": {
+    "description": "Agent skills for everyone who works on the user experience, not only the people who style it.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ux-field-kit",
+      "source": "./",
+      "description": "35 skills spanning research, definition, structure, interface craft, inclusive design, build, validation and practice.",
+      "category": "design",
+      "keywords": ["ux", "ui", "research", "design-systems", "accessibility"]
+    }
+  ]
+}

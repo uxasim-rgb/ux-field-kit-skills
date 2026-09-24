@@ -1,0 +1,5 @@
+skills/**/*.md linguist-detectable
+README.md linguist-documentation
+
+# Shell scripts must stay LF, or bash on Linux CI chokes on carriage returns
+*.sh text eol=lf

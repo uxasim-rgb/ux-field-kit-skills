@@ -1,0 +1,25 @@
+{
+  "name": "ux-field-kit",
+  "description": "The whole UX practice in one place: research, synthesis, strategy, information architecture, interface craft, accessibility, design systems, handoff and the working habits around them.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Asim Sharif",
+    "email": "asim@uxasim.com",
+    "url": "https://uxasim.com/"
+  },
+  "homepage": "https://uxasim.com/",
+  "repository": "https://github.com/uxasim-rgb/ux-field-kit-skills",
+  "license": "MIT",
+  "keywords": [
+    "ux",
+    "ui",
+    "product-design",
+    "ux-research",
+    "design-engineering",
+    "design-systems",
+    "accessibility",
+    "information-architecture",
+    "usability-testing",
+    "design-ops"
+  ]
+}

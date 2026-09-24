@@ -1,0 +1,39 @@
+name: Trigger failure
+description: The wrong skill fired, or none did
+labels: ["triggering"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the most useful bug report this repository can get. A trigger failure
+        usually means a `when_to_use` is wrong, which is a quick fix.
+  - type: textarea
+    id: request
+    attributes:
+      label: What you typed
+      description: Verbatim, please — the exact phrasing is the evidence.
+      placeholder: "We want to watch people try the new checkout before we ship it."
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Skill you expected
+      placeholder: usability-testing
+    validations:
+      required: true
+  - type: input
+    id: actual
+    attributes:
+      label: Skill that fired
+      description: Write "none" if nothing fired.
+      placeholder: heuristic-evaluation
+    validations:
+      required: true
+  - type: dropdown
+    id: harness
+    attributes:
+      label: Where
+      options: [Claude Code CLI, Claude desktop app, Codex, opencode, Other]
+    validations:
+      required: true

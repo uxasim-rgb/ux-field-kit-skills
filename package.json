@@ -1,0 +1,44 @@
+{
+  "name": "ux-field-kit",
+  "version": "1.0.0",
+  "description": "Agent skills covering the whole UX practice: research, definition, structure, interface craft, inclusive design, build, validation and the habits around them.",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Asim Sharif",
+    "email": "asim@uxasim.com",
+    "url": "https://uxasim.com/"
+  },
+  "homepage": "https://github.com/uxasim-rgb/ux-field-kit-skills#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uxasim-rgb/ux-field-kit-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uxasim-rgb/ux-field-kit-skills/issues"
+  },
+  "keywords": [
+    "claude-code",
+    "claude-code-plugin",
+    "agent-skills",
+    "ux",
+    "ui",
+    "product-design",
+    "ux-research",
+    "design-engineering",
+    "design-systems",
+    "accessibility"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "npm run validate",
+    "validate": "bash scripts/validate.sh",
+    "check:evals": "node scripts/check-evals.js",
+    "new-skill": "bash scripts/new-skill.sh",
+    "eval": "claude plugin eval . --trust-plugin --max-cost-usd 30 --no-publish",
+    "eval:smoke": "claude plugin eval . --case usability-testing --runs 1 --ablation none",
+    "eval:case": "claude plugin eval . --runs 1 --ablation none --case"
+  }
+}

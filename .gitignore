@@ -1,0 +1,10 @@
+# Eval runs write timestamped output here
+evals/results/
+evals-result.json
+
+# OS and editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
